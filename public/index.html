@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <title>rledford.dev</title>
+    <!-- Latest compiled and minifi~ed CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!--[if lt IE 9]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong>browser. Please
+        <a href="http://browsehappy.com/">upgrade your browser</a>to improve
+        your experience.
+      </p>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <h1>rledford.dev</h1>
+      <div>
+        <div class="row">
+          <div class="col-sm-4 offset-sm-4">
+            <div id="github">
+              <div class="card" style="width: 20em">
+                <img class="card-img-top" id="avatar" />
+              </div>
+              <div class="card-body">
+                <h3 class="card-title" id="login"></h3>
+                <a class="link" href="https://github.com/rledford"
+                  >https://github.com/rledford</a
+                >
+                <table class="table">
+                  <tr>
+                    <td>Repos</td>
+                    <td id="repos"></td>
+                  </tr>
+                  <tr>
+                    <td>Gists</td>
+                    <td id="gists"></td>
+                  </tr>
+                  <tr>
+                    <td>Member Since</td>
+                    <td id="created"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.onload = function() {
+        $.ajax({
+          url: 'https://api.github.com/users/rledford',
+          type: 'GET',
+          accepts: {
+            v3: 'application/vnd.github.v3+json'
+          },
+          success: function(data) {
+            const {
+              login,
+              avatar_url,
+              public_repos,
+              public_gists,
+              followers,
+              following,
+              created_at
+            } = data;
+            $('#login').html(login);
+            $('#avatar').attr('src', avatar_url);
+            $('#repos').html(public_repos);
+            $('#gists').html(public_gists);
+            $('#created').html(new Date(created_at).getFullYear());
+          }
+        });
+      };
+    </script>
+  </body>
+</html>
