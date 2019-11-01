@@ -28,17 +28,31 @@
     <div class="container">
       <h1>rledford.dev</h1>
       <div>
+        <a href="https://github.com/rledford"
+          ><i class="fab fa-github fa-2x" style="color: #333;"></i
+        ></a>
+        <a href="https://www.npmjs.com/~rledford"
+          ><i class="fab fa-npm fa-2x" style="color: #333;"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/ryan-ledford-356944124/"
+          ><i class="fab fa-linkedin fa-2x" style="color: #333;"></i
+        ></a>
+        <a href="https://www.freecodecamp.org/rledford"
+          ><i class="fab fa-free-code-camp fa-2x" style="color: #333;"></i
+        ></a>
+        <a href="https://codepen.io/rledford"
+          ><i class="fab fa-codepen fa-2x" style="color: #333;"></i
+        ></a>
+      </div>
+      <div>
         <div class="row">
           <div class="col-sm-4 offset-sm-4">
             <div id="github">
-              <div class="card" style="width: 20em">
+              <div class="card mx-auto" style="width: 12rem">
                 <img class="card-img-top" id="avatar" />
               </div>
               <div class="card-body">
                 <h3 class="card-title" id="login"></h3>
-                <a class="link" href="https://github.com/rledford"
-                  >https://github.com/rledford</a
-                >
                 <table class="table">
                   <tr>
                     <td>Repos</td>
@@ -63,9 +77,9 @@
         <div>
           <h3>Operating Systems</h3>
           <ul>
-            <li>Linux</li>
-            <li>MacOS</li>
-            <li>Windows</li>
+            <li>Linux <span class='rating'>4</span></span></li>
+            <li>MacOS <span class='rating'>5</span></li>
+            <li>Windows <span class='rating'>5</span></li>
           </ul>
         </div>
         <div>
@@ -176,8 +190,18 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://kit.fontawesome.com/3985fd9177.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
       window.onload = function() {
+        let stars = Array(5).fill("<i class='fas fa-star' style='color: gold;'></i>")
+        $('.rating').each(function (i, el) {
+          let nStars = parseInt(el.innerHTML);
+          if (isNaN(nStars)) return;
+          el.innerHTML = stars.slice(0, nStars).join('');
+        });
         $.ajax({
           url: 'https://api.github.com/users/rledford',
           type: 'GET',
