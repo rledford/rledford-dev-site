@@ -18,6 +18,9 @@
       .icon-dark {
         color: #333;
       }
+      .icon-light {
+        color: #dedede;
+      }
     </style>
   </head>
 
@@ -521,12 +524,23 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      var MAX_RATING = 5;
       window.onload = function() {
-        let stars = Array(5).fill("<i class='fas fa-star icon-dark'></i>");
+        let estars = Array(MAX_RATING).fill(
+          "<i class='far fa-star icon-light'></i>"
+        );
+        let stars = Array(MAX_RATING).fill(
+          "<i class='fas fa-star icon-dark'></i>"
+        );
         $('.rating').each(function(i, el) {
           let nStars = parseInt(el.innerHTML);
           if (isNaN(nStars)) return;
-          el.innerHTML = stars.slice(0, nStars).join('');
+          let nEmpty = MAX_RATING - nStars;
+          let ratingHtml = stars.slice(0, nStars).join('');
+          if (nEmpty) {
+            ratingHtml += estars.slice(0, nEmpty).join('');
+          }
+          el.innerHTML = ratingHtml;
         });
         $.ajax({
           url: 'https://api.github.com/users/rledford',
