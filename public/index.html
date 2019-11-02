@@ -29,7 +29,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="float-left">
-            <h1>rledford.dev</h1>
+            <h1>Ryan Ledford</h1>
           </div>
           <div class="float-right">
             <small class="align-top text-right" style="color: red;"
@@ -64,19 +64,19 @@
                 <img class="card-img-top" id="avatar" />
               </div>
               <div class="card-body">
-                <h3 class="card-title" id="username"></h3>
+                <h3 class="card-title text-center" >GitHub</h3>
                 <table class="table table-sm">
                   <tr>
                     <td>Repos</td>
-                    <td id="repos" class="text-center"></td>
+                    <td id="repos" class="text-center">--</td>
                   </tr>
                   <tr>
                     <td>Gists</td>
-                    <td id="gists" class="text-center"></td>
+                    <td id="gists" class="text-center">----</td>
                   </tr>
                   <tr>
                     <td>Joined</td>
-                    <td id="created" class="text-center"></td>
+                    <td id="created" class="text-center">--</td>
                   </tr>
                 </table>
               </div>
@@ -220,6 +220,14 @@
             <h4>JS Frameworks</h4>
             <table class="table table-sm">
               <tr>
+                <td>Express</td>
+                <td><span class="rating">5</span></td>
+              </tr>
+              <tr>
+                <td>Meteor</td>
+                <td><span class="rating">5</span></td>
+              </tr>
+              <tr>
                 <td>React</td>
                 <td><span class="rating">5</span></td>
               </tr>
@@ -227,19 +235,11 @@
                 <td>Vue</td>
                 <td><span class="rating">4</span></td>
               </tr>
-              <tr>
-                <td>Meteor</td>
-                <td><span class="rating">5</span></td>
-              </tr>
             </table>
           </div>
           <div class="col-md-4">
             <h4>JS Libs</h4>
             <table class="table table-sm">
-              <tr>
-                <td>Express</td>
-                <td><span class="rating">5</span></td>
-              </tr>
               <tr>
                 <td>Joi</td>
                 <td><span class="rating">5</span></td>
@@ -350,11 +350,11 @@
             <table class="table table-sm">
               <tr>
                 <td>Amazon Web Services</td>
-                <td><span class="rating">4</span></td>
+                <td><span class="rating">5</span></td>
               </tr>
               <tr>
-                <td>Google Firebase</td>
-                <td><span class="rating">3</span></td>
+                <td>Google Cloud</td>
+                <td><span class="rating">4</span></td>
               </tr>
               <tr>
                 <td>Meteor</td>
@@ -398,7 +398,7 @@
             <li>Middleware</li>
           </ul>
         </div>
-        <h2 class="mt-5">Industry Specializations</h2>
+        <h2 class="mt-5">Product Specializations</h2>
         <hr />
         <div class="row">
           <div class="col-md-4">
@@ -550,7 +550,7 @@
           },
           success: function(data) {
             const {
-              username,
+              login,
               avatar_url,
               public_repos,
               public_gists,
@@ -558,7 +558,7 @@
               following,
               created_at
             } = data;
-            $('#username').html(username);
+            // $('#username').html(login);
             $('#avatar').attr('src', avatar_url);
             $('#repos').html(public_repos);
             $('#gists').html(public_gists);
