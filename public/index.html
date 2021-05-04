@@ -36,10 +36,11 @@
     </style>
   </head>
 
-  <body>
+  <body style='position: absolute; width: 100%;'>
+    <div class='bg'></div>
     <div
       class="container pt-4 pb-4 pl-4 pr-4"
-      style="background-color: white; box-shadow: 0 0 7px black;"
+      style="background-color: white; box-shadow: 0 0 7px black"
     >
       <div class="row">
         <div class="col-sm-12">
@@ -47,7 +48,7 @@
             <h1 class="rledford">Ryan Ledford</h1>
           </div>
           <div class="float-right">
-            <small class="align-top text-right" style="color: red;"
+            <small class="align-top text-right" style="color: red"
               >Fullstack | Software | Developer</small
             >
             <div>
@@ -110,7 +111,7 @@
                 <li>API Development</li>
                 <li>Data Modeling</li>
                 <li>Documentation</li>
-                <li>Simulation</li>
+                <li>Mock & Simulation</li>
               </ul>
             </div>
           </div>
@@ -156,10 +157,11 @@
             </ul>
           </div>
           <div class="col-md-4">
-            <h4>Improvement</h4>
+            <h4>Learning</h4>
             <ul>
-              <li>Skills</li>
-              <li>Knowledge</li>
+              <li>New Technologies</li>
+              <li>Programming Languages</li>
+              <li>New Skills</li>
             </ul>
           </div>
         </div>
@@ -171,8 +173,9 @@
             <h4>Languages</h4>
             <ul>
               <li>JavaScript</li>
-              <li>Java</li>
+              <li>Go</li>
               <li>Python</li>
+              <li>Java</li>
               <li>C#</li>
               <li>HTML</li>
               <li>Markdown</li>
@@ -194,10 +197,11 @@
             </ul>
           </div>
           <div class="col-md-4">
-            <h4>Data</h4>
+            <h4>Data Store & Transport</h4>
             <ul>
-              <li>MongoDB</li>
-              <li>Redis</li>
+              <li>NoSQL</li>
+              <li>SQL</li>
+              <li>Key:Value (Redis)</li>
               <li>Websocket</li>
               <li>REST API</li>
               <li>JSON</li>
@@ -263,9 +267,44 @@
         <h2 class="mt-5">Professional Projects</h2>
         <hr />
         <div class="card">
-          <h4 class="card-header">
-            ArxMap
-          </h4>
+          <h4 class="card-header">Positive Fusion</h4>
+          <img class="card-img-top" src="/images/positive-fusion-1.png" />
+          <img class="card-img-top" src="/images/positive-fusion-2.png" />
+          <div class="card-body">
+            <p class="card-text">
+              Positive Fusion is an end-to-end asset tracking and tool control solution built from the ground up to provide its users with real-time oversite of their items and assets. It was also built with security, extensibility, and developers in mind as it includes thorough REST API documentation, WebSocket event documentation, and data samples. Positive Fusion already supports some popular location and inventory data providers and can easily be integrated with existing systems by utilizing its API. The extensibility and developer-friendliness of Positive Fusion lead the way in the development of one of its counterparts, Fusion Assist, which was built around its REST API. Fusion Assist was designed for touch-screen PCs and utilizes RFID technology to allow users to assign and return items without an attendant present.
+            </p>
+            <p class='card-text'>
+              Some examples of Positive Fusion's real-time capabilities include:
+              <ul>
+                <li>
+                  Displaying item status changes as they happen
+                </li>
+                <li>
+                  Showing asset location changes as they happen on simple and geographic maps
+                </li>
+                <li>
+                  Automatically changing the status of items items, based on many conditions, as they are detected in different zones
+                </li>
+                <li>
+                  Reacting to item and asset changes to trigger events and send notifications
+                </li>
+                <li>
+                  Zone monitoring which, depending on the zone type, will broadcast pertinent information about the zone as activity occurs in the system.
+                </li>
+              </ul>
+            </p>
+          </div>
+          <div class="card-footer">
+            <div>
+              This project is powered by many technologies that I am unable to
+              share at this time.
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="card">
+          <h4 class="card-header">ArxMap</h4>
           <img class="card-img-top" src="/images/arxmap-1.png" />
           <div class="card-body">
             <p class="card-text">
@@ -290,9 +329,7 @@
         </div>
         <hr />
         <div class="card">
-          <h4 class="card-header">
-            SeaState
-          </h4>
+          <h4 class="card-header">SeaState</h4>
           <img class="card-img-top" src="/images/seastate-1.png" />
           <div class="card-body">
             <p class="card-text">
@@ -340,7 +377,7 @@
     ></script>
     <script>
       var MAX_RATING = 6;
-      window.onload = function() {
+      window.onload = function () {
         /*
         let estars = Array(MAX_RATING).fill(
           "<i class='far fa-circle icon-light'></i>"
@@ -365,7 +402,7 @@
           accepts: {
             v3: 'application/vnd.github.v3+json'
           },
-          success: function(data) {
+          success: function (data) {
             const {
               login,
               avatar_url,
@@ -385,4 +422,64 @@
       };
     </script>
   </body>
+  <style>
+    .bg {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      background-color: #fff;
+      opacity: 0.25;
+      background-image: linear-gradient(
+          30deg,
+          #c4c4c4 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #c4c4c4 87.5%,
+          #c4c4c4
+        ),
+        linear-gradient(
+          150deg,
+          #c4c4c4 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #c4c4c4 87.5%,
+          #c4c4c4
+        ),
+        linear-gradient(
+          30deg,
+          #c4c4c4 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #c4c4c4 87.5%,
+          #c4c4c4
+        ),
+        linear-gradient(
+          150deg,
+          #c4c4c4 12%,
+          transparent 12.5%,
+          transparent 87%,
+          #c4c4c4 87.5%,
+          #c4c4c4
+        ),
+        linear-gradient(
+          60deg,
+          #c4c4c477 25%,
+          transparent 25.5%,
+          transparent 75%,
+          #c4c4c477 75%,
+          #c4c4c477
+        ),
+        linear-gradient(
+          60deg,
+          #c4c4c477 25%,
+          transparent 25.5%,
+          transparent 75%,
+          #c4c4c477 75%,
+          #c4c4c477
+        );
+      background-size: 40px 70px;
+      background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+    }
+  </style>
 </html>
