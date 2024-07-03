@@ -77,7 +77,7 @@
                 <img class="card-img-top" style="border-radius: 50%" id="avatar">
               </div>
               <div class="card-body">
-                <h3 class="card-title text-center">GitHub</h3>
+                <h3 class="card-title text-center">rledford</h3>
                 <table class="table table-sm">
                   <tr>
                     <td>Repos</td>
@@ -103,8 +103,8 @@
         <div class="card border-primary">
           <div class='card-header bg-primary text-white'>2021 - Present</div>
           <div class="card-body text-dark">
-            <h5 class="card-title">Software Engineer</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Theorem</h6>
+            <h5 class="card-title">Sr. Software Engineer</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Formula.Monks</h6>
             <p class="card-text">Delivering high quality software solutions with a team of experts that continuously learn and succeed together.</p>
           </div>
         </div>
@@ -206,10 +206,11 @@
           <div class="col-md-4">
             <h4>Programming</h4>
             <ul>
-              <li>JavaScript</li>
               <li>TypeScript</li>
               <li>Go</li>
               <li>Python</li>
+              <li>Lua</li>
+              <li>Ruby</li>
             </ul>
           </div>
           <div class="col-md-4">
@@ -229,45 +230,44 @@
           <div class="col-md-4">
             <h4>Programming</h4>
             <ul>
-              <li>JavaScript</li>
               <li>TypeScript</li>
               <li>Go</li>
               <li>Python</li>
+              <li>Lua</li>
+              <li>Ruby</li>
               <li>Java</li>
               <li>C#</li>
               <li>C++</li>
             </ul>
           </div>
           <div class="col-md-4">
-            <h4>Tools</h4>
+            <h4>Store & Transport</h4>
             <ul>
-              <li>Git</li>
-              <li>VS Code</li>
-              <li>NPM</li>
-              <li>Postman</li>
-              <li>Vi(m)</li>
-              <li>cURL</li>
-              <li>SSH</li>
-              <li>FTP</li>
+              <li>SQL</li>
+              <li>NoSQL</li>
+              <li>In-Memory</li>
+              <li>WebSocket</li>
+              <li>REST & RPC</li>
+              <li>GraphQL</li>
+              <li>MQTT and AMQP</li>
             </ul>
           </div>
           <div class="col-md-4">
-            <h4>Store & Transport</h4>
+            <h4>Libs & Frameworks</h4>
             <ul>
-              <li>NoSQL</li>
-              <li>SQL</li>
-              <li>In-Memory</li>
-              <li>WebSocket</li>
-              <li>MQTT</li>
-              <li>REST</li>
-              <li>RPC</li>
-              <li>JSON</li>
+              <li>NestJS</li>
+              <li>TypeORM</li>
+              <li>Express</li>
+              <li>Passport</li>
+              <li>MSAL</li>
+              <li>NextJS</li>
+              <li>Electron</li>
             </ul>
           </div>
           <div class="col-md-4">
             <h4>Backend</h4>
             <ul>
-              <li>REST and RPC</li>
+              <li>REST, GraphQL, RPC</li>
               <li>Database Modeling</li>
               <li>Cluster / Worker</li>
               <li>IPC</li>
@@ -281,11 +281,38 @@
             <ul>
               <li>Vue + Vuex</li>
               <li>React + Redux</li>
+              <li>Backend Integration</li>
               <li>CSS, SASS, SCSS</li>
-              <li>Fetch, Requests, Axios</li>
-              <li>Async/Await</li>
-              <li>Lodash</li>
-              <li>D3</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Tools</h4>
+            <ul>
+              <li>VS Code</li>
+              <li>Git</li>
+              <li>NPM / PNPM / Vite</li>
+              <li>Postman</li>
+              <li>Vi(m)</li>
+              <li>cURL</li>
+              <li>ssh</li>
+              <li>ftp</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Testing</h4>
+            <ul>
+              <li>Vitest</li>
+              <li>Jest</li>
+              <li>Mocha</li>
+              <li>Chai</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Integration</h4>
+            <ul>
+              <li>AzureAD / MS Graph</li>
+              <li>Auth0</li>
+              <li>Smartsheet</li>
             </ul>
           </div>
           <div class="col-md-4">
@@ -305,7 +332,7 @@
             <ul>
               <li>ItemSense</li>
               <li>API Integration</li>
-              <li>Speedway Connect</li>
+              <li>IoT API and Speedway Connect</li>
               <li>Reader Configuration</li>
               <li>Reader Provisioning</li>
             </ul>
@@ -347,6 +374,37 @@
         <h2 class="mt-5">Professional Projects</h2>
         <hr />
         <div class="card">
+          <h4 class="card-header">NWEA Labs</h4>
+          <img class="card-img-top" src="/images/nwea-labs.png" />
+          <div class="card-body">
+            <p class="card-text">
+              The NWEA Labs project is a mixture of custom-built apps, libraries, and services that allow Researchers and Content Creators to build and deploy tests to students across the globe without collecting or exposing any personal identifying information about the students that participate.
+            </p>
+            <p>
+              This project primarily consists of an administration application for Researchers and Content Creators that allow them to deploy tests to groups of hundreds or thousands of students, and a testing application for students that allow them to participate in the assessments.
+            </p>
+            <p>
+              During an assessment, the student's responses as well as non-PII analytical data are collected and submitted to the server application. The responses and analytics collected are later processed through a pipe of custom data extraction and aggregation tools that we built
+              specifically for this platform.
+            </p>
+            <p>
+              One of the most interesting solutions we built for this project was a "Replay Service", which allows one or more Researchers to see what a Student is doing while taking an assessment in real-time along with live note-taking features. The "Replay Service" also provides a way to playback a Student's session alongside the notes that were
+              taken by Researchers at various points throughout the session. Initially we tried an RTC solution but this was too complicated for younger students and was not permitted in some browsers due to strict security settings. We ended up building a custom solution
+              that captured a full snapshot of the DOM followed by partial snapshots as things changed on the screen, along with other event data such as mouse movements.
+              All of the captured data was streamed via Websockets and piped appropriately by a custom backend solution that was responsible for saving the data and streaming to any live viewers.
+            </p>
+            <p>
+              One of the most important aspects of this project is the high-priority for proper accessibility. We used AXE dev tools extensively while building the frontend solutions for both the Researcher and Student applications to ensure screen readers (including Braille), haptic devices, and various input devices worked properly.
+            </p>
+          </div>
+          <div class="card-footer">
+            <div>
+              2021-2023
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="card">
           <h4 class="card-header">Positive Fusion</h4>
           <img class="card-img-top" src="/images/positive-fusion-1.png" />
           <img class="card-img-top" src="/images/positive-fusion-2.png" />
@@ -377,8 +435,7 @@
           </div>
           <div class="card-footer">
             <div>
-              This project is powered by many technologies that I am unable to
-              share at this time.
+              2019
             </div>
           </div>
         </div>
@@ -398,39 +455,7 @@
           </div>
           <div class="card-footer">
             <div>
-              This project is powered by MongoDB, Express, React, Node,
-              ThingSpeak, Wowza, JWPlayer, and Leaflet.
-            </div>
-            <div>
-              <a href="http://seastate.dofsubsea.com" target="_blank"
-                >http://seastate.dofsubsea.com
-                <i class="fas fa-external-link-alt"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div class="card">
-          <h4 class="card-header">ArxMap</h4>
-          <img class="card-img-top" src="/images/arxmap-1.png" />
-          <div class="card-body">
-            <p class="card-text">
-              ArxMap was built in 2018 to track asset locations at a low cost.
-              Users are able to create geofences on an interactive map and
-              choose to be notified when assets enter and exit them. This
-              application can be easily customized for any company interested in
-              using it; even on another public or private domain.
-            </p>
-          </div>
-          <div class="card-footer">
-            <div>
-              This project is powered by Node, MongoDB, React, Meteor, SPOT, and
-              Leaflet.
-            </div>
-            <div>
-              <a href="https://www.arxmap.com" target="_blank"
-                >https://www.arxmap.com <i class="fas fa-external-link-alt"></i
-              ></a>
+              2016
             </div>
           </div>
         </div>
