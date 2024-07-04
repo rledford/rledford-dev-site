@@ -223,20 +223,26 @@
           </div>
         </div>
 
-        <h2 class="mt-5">Hobbies</h2>
+        <h2 class="mt-5">Hobbies & Interests</h2>
         <hr />
-        <div class="d-flex  flex-wrap w-100 justify-content-between">
-          <div class="p-4">
-            <li>Discovering Music</li>
-            <li>Playing Guitar</li>
-          </div>
-          <div class="p-4">
-            <li>Game Development</li>
-            <li>Pixel Art</li>
-          </div>
-          <div class="p-4">
-            <li>Learning</li>
-            <li>Teaching</li>
+        <div>
+          <div class="row">
+            <div class="col-md-4">
+              <ul>
+                <li>Pixel Art</li>
+                <li>Game Dev</li>
+                <li>Music</li>
+                <li>Guitar</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul>
+                <li>Learning</li>
+                <li>Teaching</li>
+                <li>Reading</li>
+                <li>Tinkering</li>
+              </ul>
+            </div>
           </div>
         </div>
           
@@ -265,7 +271,7 @@
               <li>WebSocket</li>
               <li>REST & RPC</li>
               <li>GraphQL</li>
-              <li>MQTT and AMQP</li>
+              <li>MQTT & AMQP</li>
             </ul>
           </div>
           <div class="col-md-4">
@@ -395,23 +401,17 @@
           <img class="card-img-top" src="/images/nwea-labs.png" />
           <div class="card-body">
             <p class="card-text">
-              The NWEA Labs project is a mixture of custom-built apps, libraries, and services that allow Researchers and Content Creators to build and deploy tests to students across the globe without collecting or exposing any personal identifying information about the students that participate.
+              The NWEA Labs project is a mixture of custom-built apps, libraries, and services that allow Researchers and Content Creators to build and deploy tests to students across the country without collecting or exposing any personal identifying information about the students that participate.
             </p>
             <p>
-              This project primarily consists of an administration application for Researchers and Content Creators that allow them to deploy tests to groups of hundreds or thousands of students, and a testing application for students that allow them to participate in the assessments.
-            </p>
-            <p>
-              During an assessment, the student's responses as well as non-PII analytical data are collected and submitted to the server application. The responses and analytics collected are later processed through a pipe of custom data extraction and aggregation tools that we built
+              This project primarily consists of an administration application for Researchers and Content Creators that allows them to deploy tests to groups of hundreds or thousands of students, and a testing application for students that allows them to participate in the assessments.
+              During an assessment, the student's responses and metrics are collected and submitted to the server application. The responses and metrics collected are later processed through a pipe of custom data extraction and aggregation tools that we built
               specifically for this platform.
             </p>
             <p>
-              One of the most interesting solutions we built for this project was a "Replay Service", which allows one or more Researchers to see what a Student is doing while taking an assessment in real-time along with live note-taking features. The "Replay Service" also provides a way to playback a Student's session alongside the notes that were
-              taken by Researchers at various points throughout the session. Initially we tried an RTC solution but this was too complicated for younger students and was not permitted in some browsers due to strict security settings. We ended up building a custom solution
-              that captured a full snapshot of the DOM followed by partial snapshots as things changed on the screen, along with other event data such as mouse movements.
-              All of the captured data was streamed via Websockets and piped appropriately by a custom backend solution that was responsible for saving the data and streaming to any live viewers.
-            </p>
-            <p>
-              One of the most important aspects of this project is the high-priority for proper accessibility. We used AXE dev tools extensively while building the frontend solutions for both the Researcher and Student applications to ensure screen readers (including Braille), haptic devices, and various input devices worked properly.
+              One of the most interesting solutions we built for this project was a "Replay Service", which allows one or more Researchers to see a Student's assessment session in real-time along with live note-taking features. The "Replay Service" also provides a way to playback a recorded session alongside the notes that were
+              taken by Researchers. In order to do this without integrating with third-party services and to adhere to strict data retention and privacy policies, we built a custom fullstack solution that captures and streams the DOM along with other event data such as mouse movements and key presses.
+              All of the captured data is streamed via Websockets to a custom service that is responsible for saving the data and streaming to any live viewers.
             </p>
           </div>
           <div class="card-footer">
