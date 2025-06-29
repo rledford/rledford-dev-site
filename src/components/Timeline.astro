@@ -1,0 +1,44 @@
+---
+import Grid from './Grid.tsx';
+import Card from './Card.tsx';
+
+const timelineData = [
+  {
+    title: "2021 - Present",
+    subtitle: "Sr. Software Engineer",
+    company: "Monks",
+    content: "Delivering high quality software solutions with a team of experts that continuously learn and succeed together.",
+    headerClass: "bg-blue-600 text-white",
+    borderClass: "border-blue-600"
+  },
+  {
+    title: "2017 - 2021",
+    subtitle: "Software Engineer", 
+    company: "Gould Southern",
+    content: "Hardware and software development, consulting, technical support, and troubleshooting. Full stack solutions development.",
+    headerClass: "bg-gray-100 text-gray-800",
+    borderClass: "border-gray-300"
+  },
+  {
+    title: "2014 - 2017",
+    subtitle: "Sr. Engineer Offshore",
+    company: "DOF Subsea", 
+    content: "Hardware and software development, calibration, configuration, integration, and troubleshooting. Full stack solutions development.",
+    headerClass: "bg-gray-100 text-gray-800",
+    borderClass: "border-gray-300"
+  }
+];
+---
+
+<Grid client:load cols="grid-cols-1 md:grid-cols-3">
+  {timelineData.map((job) => (
+    <Card
+      title={job.title}
+      subtitle={job.subtitle}
+      content={job.content}
+      headerClass={job.headerClass}
+      borderClass={job.borderClass}
+      client:load
+    />
+  ))}
+</Grid>
