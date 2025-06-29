@@ -5,16 +5,7 @@ export default function SkillsGrid() {
   const skillsData = [
     {
       title: 'Languages',
-      items: [
-        'TypeScript/JavaScript',
-        'Go',
-        'Python',
-        'Lua',
-        'Ruby',
-        'Java',
-        'C#',
-        'C++',
-      ],
+      items: ['TypeScript', 'Go', 'Python', 'Lua', 'Ruby', 'Java', 'C#', 'C++'],
     },
     {
       title: 'Store & Transport',
