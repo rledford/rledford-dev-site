@@ -10,7 +10,7 @@ export default function Timeline() {
       content:
         'AI solution development, team leadership, and scalable platform architecture. Roleplay simulation and intelligent quality assurance systems.',
       headerClass:
-        'bg-gradient-to-r from-blue-600 to-blue-700 text-white border-b border-blue-500',
+        'bg-gradient-to-r from-blue-600 to-blue-700 text-white border-b border-blue-500 [text-shadow:_1px_1px_2px_rgb(0_0_0_/_80%)]',
       borderClass: 'border-blue-300',
     },
     {
@@ -20,8 +20,8 @@ export default function Timeline() {
       content:
         'Educational assessment platforms and real-time analytics. Custom data processing, WebSocket streaming, and DOM replay systems for research applications.',
       headerClass:
-        'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white border-b border-emerald-400',
-      borderClass: 'border-emerald-300',
+        'bg-gradient-to-r from-blue-600/80 to-blue-700/80 text-white border-b border-blue-500/80 [text-shadow:_1px_1px_2px_rgb(0_0_0_/_80%)]',
+      borderClass: 'border-blue-300',
     },
     {
       title: '2017 - 2021',
@@ -30,8 +30,8 @@ export default function Timeline() {
       content:
         'Real-time asset tracking and RFID tool control systems. REST API development, WebSocket integration, and touch-screen kiosk applications.',
       headerClass:
-        'bg-gradient-to-r from-purple-500 to-purple-600 text-white border-b border-purple-400',
-      borderClass: 'border-purple-300',
+        'bg-gradient-to-r from-blue-600/60 to-blue-700/60 text-white border-b border-blue-500/60 [text-shadow:_1px_1px_2px_rgb(0_0_0_/_80%)]',
+      borderClass: 'border-blue-300',
     },
     {
       title: '2014 - 2017',
@@ -40,8 +40,8 @@ export default function Timeline() {
       content:
         'Offshore vessel tracking and real-time video streaming systems. Hardware integration, location services, and marine client notification platforms.',
       headerClass:
-        'bg-gradient-to-r from-indigo-500 to-indigo-600 text-white border-b border-indigo-400',
-      borderClass: 'border-indigo-300',
+        'bg-gradient-to-r from-blue-600/40 to-blue-700/40 text-white border-b border-blue-500/40 [text-shadow:_1px_1px_2px_rgb(0_0_0_/_80%)]',
+      borderClass: 'border-blue-300',
     },
   ];
 
