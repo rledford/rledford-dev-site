@@ -9,8 +9,9 @@ export default function Timeline() {
       company: 'ReflexAI',
       content:
         'AI solution development, team leadership, and scalable platform architecture. Roleplay simulation and intelligent quality assurance systems.',
-      headerClass: 'bg-blue-600 text-white',
-      borderClass: 'border-blue-600',
+      headerClass:
+        'bg-gradient-to-r from-blue-600 to-blue-700 text-white border-b border-blue-500',
+      borderClass: 'border-blue-300',
     },
     {
       title: '2021 - 2024',
@@ -18,8 +19,9 @@ export default function Timeline() {
       company: 'Monks',
       content:
         'Educational assessment platforms and real-time analytics. Custom data processing, WebSocket streaming, and DOM replay systems for research applications.',
-      headerClass: 'bg-blue-100 text-blue-800',
-      borderClass: 'border-blue-200',
+      headerClass:
+        'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white border-b border-emerald-400',
+      borderClass: 'border-emerald-300',
     },
     {
       title: '2017 - 2021',
@@ -27,8 +29,9 @@ export default function Timeline() {
       company: 'Gould Southern',
       content:
         'Real-time asset tracking and RFID tool control systems. REST API development, WebSocket integration, and touch-screen kiosk applications.',
-      headerClass: 'bg-gray-100 text-gray-800',
-      borderClass: 'border-gray-300',
+      headerClass:
+        'bg-gradient-to-r from-purple-500 to-purple-600 text-white border-b border-purple-400',
+      borderClass: 'border-purple-300',
     },
     {
       title: '2014 - 2017',
@@ -36,13 +39,14 @@ export default function Timeline() {
       company: 'DOF Subsea',
       content:
         'Offshore vessel tracking and real-time video streaming systems. Hardware integration, location services, and marine client notification platforms.',
-      headerClass: 'bg-gray-100 text-gray-800',
-      borderClass: 'border-gray-300',
+      headerClass:
+        'bg-gradient-to-r from-indigo-500 to-indigo-600 text-white border-b border-indigo-400',
+      borderClass: 'border-indigo-300',
     },
   ];
 
   return (
-    <Grid cols="grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+    <Grid cols="grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
       {timelineData.map((job) => (
         <Card
           title={job.title}

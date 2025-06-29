@@ -110,10 +110,12 @@ const { title = "rledford.dev" } = Astro.props;
     </style>
   </head>
 
-  <body class="font-sans bg-gray-50 absolute w-full">
+  <body class="font-sans bg-gray-50 min-h-screen">
     <div class="bg-pattern"></div>
-    <div class="container mx-auto pt-4 pb-4 pl-4 pr-4 bg-white shadow-lg">
-      <slot />
+    <div class="relative">
+      <div class="container mx-auto px-4 py-8 bg-white/95 backdrop-blur-sm shadow-2xl min-h-screen">
+        <slot />
+      </div>
     </div>
   </body>
 </html>

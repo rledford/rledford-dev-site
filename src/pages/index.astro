@@ -11,38 +11,117 @@ import ProjectsShowcase from '../components/ProjectsShowcase.tsx';
 ---
 
 <Layout>
-  <Header />
-  <hr class="my-4" />
+  <!-- Hero Section -->
+  <section class="relative">
+    <Header />
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+  </section>
   
-  <div class="mt-10">
-    <div class="grid md:grid-cols-3">
-      <div class="md:col-start-2">
-        <GitHubProfile client:load />
+  <!-- Profile Section -->
+  <section class="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)]"></div>
+    <div class="relative">
+      <div class="grid md:grid-cols-3">
+        <div class="md:col-start-2">
+          <GitHubProfile client:load />
+        </div>
       </div>
     </div>
-  </div>
+  </section>
   
-  <h2 class="text-3xl font-bold mt-10">Timeline</h2>
-  <hr class="my-4" />
-  <Timeline />
+  <!-- Skills Section -->
+  <section class="py-16 bg-gradient-to-br from-indigo-50 to-blue-50 border-t border-gray-100">
+    <div class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg">
+          <i class="fas fa-code text-white text-sm"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900">Skills</h2>
+      </div>
+      <div class="h-px bg-gradient-to-r from-indigo-500 via-indigo-300 to-transparent w-32"></div>
+    </div>
+    <div class="px-4">
+      <SkillsGrid />
+    </div>
+  </section>
   
-  <h2 class="text-3xl font-bold mt-10">Focus</h2>
-  <hr class="my-4" />
-  <FocusGrid />
+  <!-- Timeline Section -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
+          <i class="fas fa-clock text-white text-sm"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900">Timeline</h2>
+      </div>
+      <div class="h-px bg-gradient-to-r from-blue-500 via-blue-300 to-transparent w-32"></div>
+    </div>
+    <div class="px-4">
+      <Timeline />
+    </div>
+  </section>
   
-  <h2 class="text-3xl font-bold mt-10">Hobbies & Interests</h2>
-  <hr class="my-4" />
-  <HobbiesSection />
+  <!-- Projects Section -->
+  <section class="py-16 bg-gradient-to-br from-gray-50 to-slate-50 border-t border-gray-100">
+    <div class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center shadow-lg">
+          <i class="fas fa-briefcase text-white text-sm"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900">Professional Projects</h2>
+      </div>
+      <div class="h-px bg-gradient-to-r from-red-500 via-red-300 to-transparent w-32"></div>
+    </div>
+    <div class="px-4">
+      <ProjectsShowcase />
+    </div>
+  </section>
   
-  <h2 class="text-3xl font-bold mt-10">Skills</h2>
-  <hr class="my-4" />
-  <SkillsGrid />
+  <!-- Focus Section -->
+  <section class="py-16 bg-gradient-to-br from-slate-50 to-gray-50 border-t border-gray-100">
+    <div class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
+          <i class="fas fa-bullseye text-white text-sm"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900">Focus</h2>
+      </div>
+      <div class="h-px bg-gradient-to-r from-emerald-500 via-emerald-300 to-transparent w-32"></div>
+    </div>
+    <div class="px-4">
+      <FocusGrid />
+    </div>
+  </section>
   
-  <h2 class="text-3xl font-bold mt-10">Product Specializations</h2>
-  <hr class="my-4" />
-  <ProductSpecializations />
+  <!-- Product Specializations Section -->
+  <section class="py-16 bg-white border-t border-gray-100">
+    <div class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center shadow-lg">
+          <i class="fas fa-cogs text-white text-sm"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900">Product Specializations</h2>
+      </div>
+      <div class="h-px bg-gradient-to-r from-orange-500 via-orange-300 to-transparent w-32"></div>
+    </div>
+    <div class="px-4">
+      <ProductSpecializations />
+    </div>
+  </section>
   
-  <h2 class="text-3xl font-bold mt-10">Professional Projects</h2>
-  <hr class="my-4" />
-  <ProjectsShowcase />
+  <!-- Hobbies Section -->
+  <section class="py-16 bg-gradient-to-br from-purple-50 to-pink-50 border-t border-gray-100">
+    <div class="mb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+          <i class="fas fa-heart text-white text-sm"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900">Hobbies & Interests</h2>
+      </div>
+      <div class="h-px bg-gradient-to-r from-purple-500 via-purple-300 to-transparent w-32"></div>
+    </div>
+    <div class="px-4">
+      <HobbiesSection />
+    </div>
+  </section>
 </Layout>
