@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import GitHubProfile from '../components/GitHubProfile.astro';
-import Timeline from '../components/Timeline.astro';
-import FocusGrid from '../components/FocusGrid.astro';
-import HobbiesSection from '../components/HobbiesSection.astro';
-import SkillsGrid from '../components/SkillsGrid.astro';
-import ProductSpecializations from '../components/ProductSpecializations.astro';
-import ProjectsShowcase from '../components/ProjectsShowcase.astro';
+import Header from '../components/Header.tsx';
+import GitHubProfile from '../components/GitHubProfile.tsx';
+import Timeline from '../components/Timeline.tsx';
+import FocusGrid from '../components/FocusGrid.tsx';
+import HobbiesSection from '../components/HobbiesSection.tsx';
+import SkillsGrid from '../components/SkillsGrid.tsx';
+import ProductSpecializations from '../components/ProductSpecializations.tsx';
+import ProjectsShowcase from '../components/ProjectsShowcase.tsx';
 ---
 
 <Layout>
@@ -17,7 +17,7 @@ import ProjectsShowcase from '../components/ProjectsShowcase.astro';
   <div class="mt-10">
     <div class="grid md:grid-cols-3">
       <div class="md:col-start-2">
-        <GitHubProfile />
+        <GitHubProfile client:load />
       </div>
     </div>
   </div>

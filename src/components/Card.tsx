@@ -18,9 +18,7 @@ const Card: Component<CardProps> = (props) => {
     <div
       class={`bg-white border-2 ${borderClasses()} rounded-lg shadow overflow-hidden`}
     >
-      <div class={`${headerClasses()} px-4 py-2 rounded-t-lg font-bold`}>
-        {props.title}
-      </div>
+      <div class={`${headerClasses()} px-4 py-2 font-bold`}>{props.title}</div>
 
       {props.images &&
         props.images.map((image) => (
