@@ -7,6 +7,7 @@ export default function ProjectsShowcase() {
         title="NWEA Labs"
         images={['/images/nwea-labs.png']}
         year="2021-2023"
+        color="amber"
       >
         <p class="text-gray-700 mb-4">
           The NWEA Labs project is a mixture of custom-built apps, libraries,
@@ -48,6 +49,7 @@ export default function ProjectsShowcase() {
           '/images/positive-fusion-2.png',
         ]}
         year="2019"
+        color="amber"
       >
         <p class="text-gray-700 mb-4">
           Positive Fusion is an end-to-end asset tracking and tool control
@@ -93,6 +95,7 @@ export default function ProjectsShowcase() {
         title="SeaState"
         images={['/images/seastate-1.png']}
         year="2016"
+        color="amber"
       >
         <p class="text-gray-700">
           SeaState was built for DOF Subsea in 2016 to deliver real time

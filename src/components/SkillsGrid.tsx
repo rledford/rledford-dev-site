@@ -84,7 +84,7 @@ export default function SkillsGrid() {
   return (
     <Grid cols="grid-cols-1 md:grid-cols-3">
       {skillsData.map((skill) => (
-        <Section title={skill.title} items={skill.items} />
+        <Section title={skill.title} items={skill.items} color="indigo" />
       ))}
     </Grid>
   );
