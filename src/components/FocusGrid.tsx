@@ -52,7 +52,7 @@ export default function FocusGrid() {
   return (
     <Grid>
       {focusAreas.map((area) => (
-        <Section title={area.title} items={area.items} />
+        <Section title={area.title} items={area.items} color="emerald" />
       ))}
     </Grid>
   );

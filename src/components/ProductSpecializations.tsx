@@ -48,7 +48,7 @@ export default function ProductSpecializations() {
   return (
     <Grid cols="grid-cols-1 md:grid-cols-3">
       {productData.map((product) => (
-        <Section title={product.title} items={product.items} />
+        <Section title={product.title} items={product.items} color="orange" />
       ))}
     </Grid>
   );
