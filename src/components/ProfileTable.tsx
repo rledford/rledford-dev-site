@@ -14,14 +14,16 @@ interface ProfileTableProps {
 const ProfileTable: Component<ProfileTableProps> = (props) => {
   return (
     <table class={`w-full text-sm ${props.class || ''}`}>
-      {props.rows.map((row, index) => (
-        <tr class={index < props.rows.length - 1 ? 'border-b' : ''}>
-          <td class="py-1">{row.label}</td>
-          <td id={row.id} class="py-1 text-center">
-            {row.value}
-          </td>
-        </tr>
-      ))}
+      <tbody>
+        {props.rows.map((row, index) => (
+          <tr class={index < props.rows.length - 1 ? 'border-b' : ''}>
+            <td class="py-1">{row.label}</td>
+            <td id={row.id} class="py-1 text-center">
+              {row.value}
+            </td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };

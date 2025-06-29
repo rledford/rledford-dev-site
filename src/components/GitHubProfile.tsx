@@ -2,7 +2,6 @@ import { createSignal, onMount, type Component } from 'solid-js';
 import ProfileTable from './ProfileTable.tsx';
 
 interface GitHubData {
-  avatar_url: string;
   public_repos: number;
   public_gists: number;
   created_at: string;
@@ -43,21 +42,47 @@ const GitHubProfile: Component = () => {
     ];
   };
 
+  const SkeletonTable = () => (
+    <table class="w-full text-sm">
+      <tbody>
+        <tr class="border-b">
+          <td class="py-1">Repos</td>
+          <td class="py-1 text-center">
+            <div class="h-4 bg-gray-200 rounded animate-pulse mx-auto w-8"></div>
+          </td>
+        </tr>
+        <tr class="border-b">
+          <td class="py-1">Gists</td>
+          <td class="py-1 text-center">
+            <div class="h-4 bg-gray-200 rounded animate-pulse mx-auto w-8"></div>
+          </td>
+        </tr>
+        <tr>
+          <td class="py-1">Joined</td>
+          <td class="py-1 text-center">
+            <div class="h-4 bg-gray-200 rounded animate-pulse mx-auto w-12"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+
   return (
     <div class="flex justify-center">
       <div class="w-3/4">
-        <div class="card mx-auto rounded-full overflow-hidden bg-white">
+        <div class="card mx-auto rounded-full overflow-hidden bg-white aspect-square">
           {loading() ? (
-            <div class="w-full h-48 bg-gray-200 rounded-full flex items-center justify-center">
-              <span class="text-gray-500">Loading...</span>
+            <div class="w-full h-full bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 bg-[length:200%_100%] animate-pulse rounded-full flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-[shimmer_2s_infinite] bg-[length:200%_100%]"></div>
+              <span class="text-gray-500 relative z-10">Loading...</span>
             </div>
           ) : error() ? (
-            <div class="w-full h-48 bg-gray-200 rounded-full flex items-center justify-center">
+            <div class="w-full h-full bg-gray-200 rounded-full flex items-center justify-center aspect-square">
               <span class="text-red-500">Error loading avatar</span>
             </div>
           ) : (
             <img
-              src={githubData()?.avatar_url}
+              src="/images/github-avatar.jpg"
               alt="GitHub Avatar"
               class="w-full h-full object-cover rounded-full"
             />
@@ -74,7 +99,7 @@ const GitHubProfile: Component = () => {
             </a>
           </h3>
           {loading() ? (
-            <div class="text-center">Loading profile data...</div>
+            <SkeletonTable />
           ) : error() ? (
             <div class="text-center text-red-500">
               Error loading profile data
