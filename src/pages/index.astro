@@ -1,16 +1,48 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import GitHubProfile from '../components/GitHubProfile.astro';
+import Timeline from '../components/Timeline.astro';
+import FocusGrid from '../components/FocusGrid.astro';
+import HobbiesSection from '../components/HobbiesSection.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import ProductSpecializations from '../components/ProductSpecializations.astro';
+import ProjectsShowcase from '../components/ProjectsShowcase.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Header />
+  <hr class="my-4" />
+  
+  <div class="mt-10">
+    <div class="grid md:grid-cols-3">
+      <div class="md:col-start-2">
+        <GitHubProfile />
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="text-3xl font-bold mt-10">Timeline</h2>
+  <hr class="my-4" />
+  <Timeline />
+  
+  <h2 class="text-3xl font-bold mt-10">Focus</h2>
+  <hr class="my-4" />
+  <FocusGrid />
+  
+  <h2 class="text-3xl font-bold mt-10">Hobbies & Interests</h2>
+  <hr class="my-4" />
+  <HobbiesSection />
+  
+  <h2 class="text-3xl font-bold mt-10">Skills</h2>
+  <hr class="my-4" />
+  <SkillsGrid />
+  
+  <h2 class="text-3xl font-bold mt-10">Product Specializations</h2>
+  <hr class="my-4" />
+  <ProductSpecializations />
+  
+  <h2 class="text-3xl font-bold mt-10">Professional Projects</h2>
+  <hr class="my-4" />
+  <ProjectsShowcase />
+</Layout>

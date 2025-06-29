@@ -1,0 +1,63 @@
+---
+import ProjectCard from './ProjectCard.tsx';
+---
+
+<div class="space-y-8">
+  <ProjectCard 
+    title="NWEA Labs" 
+    images={["/images/nwea-labs.png"]}
+    year="2021-2023"
+    client:load
+  >
+    <p class="text-gray-700 mb-4">
+      The NWEA Labs project is a mixture of custom-built apps, libraries, and services that allow Researchers and Content Creators to build and deploy tests to students across the country without collecting or exposing any personal identifying information about the students that participate.
+    </p>
+    <p class="text-gray-700 mb-4">
+      This project primarily consists of an administration application for Researchers and Content Creators that allows them to deploy tests to groups of hundreds or thousands of students, and a testing application for students that allows them to participate in the assessments.
+      During an assessment, the student's responses and metrics are collected and submitted to the server application. The responses and metrics collected are later processed through a pipe of custom data extraction and aggregation tools that we built
+      specifically for this platform.
+    </p>
+    <p class="text-gray-700">
+      One of the most interesting solutions we built for this project was a "Replay Service", which allows one or more Researchers to see a Student's assessment session in real-time along with live note-taking features. The "Replay Service" also provides a way to playback a recorded session alongside the notes that were
+      taken by Researchers. In order to do this without integrating with third-party services and to adhere to strict data retention and privacy policies, we built a custom fullstack solution that captures and streams the DOM along with other event data such as mouse movements and key presses.
+      All of the captured data is streamed via Websockets to a custom service that is responsible for saving the data and streaming to any live viewers.
+    </p>
+  </ProjectCard>
+
+  <ProjectCard 
+    title="Positive Fusion" 
+    images={["/images/positive-fusion-1.png", "/images/positive-fusion-2.png"]}
+    year="2019"
+    client:load
+  >
+    <p class="text-gray-700 mb-4">
+      Positive Fusion is an end-to-end asset tracking and tool control solution built from the ground up to provide its users with real-time oversite of their items and assets. It was also built with security, extensibility, and developers in mind as it includes thorough REST API documentation, WebSocket event documentation, and data samples. Positive Fusion already supports some popular location and inventory data providers and can easily be integrated with existing systems through its REST API. The extensibility and developer-friendliness of Positive Fusion lead the way in the development of one of its counterparts, Fusion Assist, which was built around its REST API. Fusion Assist was designed for touch-screen PCs and utilizes RFID technology to allow users to assign and return items without an attendant present.
+    </p>
+    <p class="text-gray-700">
+      Some examples of Positive Fusion's real-time capabilities include:
+    </p>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
+      <li>Displaying item status changes as they happen</li>
+      <li>Showing asset location changes as they happen on simple and geographic maps</li>
+      <li>Automatically changing the status of items, based on many conditions, as they are detected in different zones</li>
+      <li>Reacting to item and asset changes to trigger events and send notifications</li>
+      <li>Zone monitoring which, depending on the zone type, will broadcast pertinent information about the zone as activity occurs in the system.</li>
+    </ul>
+  </ProjectCard>
+
+  <ProjectCard 
+    title="SeaState" 
+    images={["/images/seastate-1.png"]}
+    year="2016"
+    client:load
+  >
+    <p class="text-gray-700">
+      SeaState was built for DOF Subsea in 2016 to deliver real time
+      location data, video streams, and notifications to clients that
+      hire vessels to perform various tasks offshore. In support of this
+      web application, various hardware and software components were
+      developed to help track vessel locations and stream HD video from
+      surface and subsea vessels.
+    </p>
+  </ProjectCard>
+</div>
