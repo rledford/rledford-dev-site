@@ -32,6 +32,10 @@ const ImageCarousel: Component<ImageCarouselProps> = (props) => {
   const nextImage = () => {
     if (isTransitioning()) return;
 
+    // Restart auto-play interval when manually navigating
+    stopAutoPlay();
+    startAutoPlay();
+
     setIsTransitioning(true);
     const nextIdx = currentIndex() + 1;
 
@@ -52,6 +56,10 @@ const ImageCarousel: Component<ImageCarouselProps> = (props) => {
   const prevImage = () => {
     if (isTransitioning()) return;
 
+    // Restart auto-play interval when manually navigating
+    stopAutoPlay();
+    startAutoPlay();
+
     setIsTransitioning(true);
     const prevIdx = currentIndex() - 1;
 
@@ -71,6 +79,11 @@ const ImageCarousel: Component<ImageCarouselProps> = (props) => {
 
   const goToImage = (index: number) => {
     if (isTransitioning()) return;
+
+    // Restart auto-play interval when manually navigating
+    stopAutoPlay();
+    startAutoPlay();
+
     setIsTransitioning(true);
     setCurrentIndex(index + 1); // Offset by 1 because of duplicate at start
     setTimeout(() => setIsTransitioning(false), 500);
