@@ -52,6 +52,7 @@ export default function Timeline() {
           title={job.title}
           subtitle={job.subtitle}
           content={job.content}
+          footer={job.company}
           headerClass={job.headerClass}
           borderClass={job.borderClass}
         />
