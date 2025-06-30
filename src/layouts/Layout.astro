@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+}
+
+const { title = "rledford.dev" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="/favicon.svg" />
+    <title>{title}</title>
+    
+    <link
+      href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/3985fd9177.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-6VVYT13278"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6VVYT13278');
+    </script>
+
+    <style>
+      @font-face {
+        font-family: 'Share Tech Mono';
+        src: url('/fonts/ShareTechMono-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      
+      body {
+        font-family: 'Share Tech Mono', 'Courier New', monospace;
+      }
+      
+      .bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        background-color: #f8fafc;
+        background-image: 
+          linear-gradient(rgba(99, 102, 241, 0.08) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(99, 102, 241, 0.08) 2px, transparent 2px),
+          radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.25) 0.8px, transparent 0.8px);
+        background-size: 30px 30px, 30px 30px, 30px 30px;
+        background-position: 0 0, 0 0, 0 0;
+      }
+    </style>
+  </head>
+
+  <body class="font-sans bg-gray-50 min-h-screen">
+    <div class="relative">
+      <div class="bg-pattern"></div>
+      <div class="max-w-6xl mx-auto bg-white/95 backdrop-blur-sm shadow-2xl min-h-screen relative z-10">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>

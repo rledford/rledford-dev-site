@@ -1,0 +1,40 @@
+import type { Component } from 'solid-js';
+
+interface TableRowData {
+  label: string;
+  value: string;
+  id?: string;
+}
+
+interface ProfileTableProps {
+  rows: TableRowData[];
+  class?: string;
+}
+
+const ProfileTable: Component<ProfileTableProps> = (props) => {
+  return (
+    <div class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+      <table class={`w-full text-sm ${props.class || ''}`}>
+        <tbody>
+          {props.rows.map((row, index) => (
+            <tr
+              class={`${
+                index < props.rows.length - 1 ? 'border-b border-gray-100' : ''
+              } hover:bg-gray-50 transition-colors duration-200`}
+            >
+              <td class="py-3 px-4 font-medium text-gray-700">{row.label}</td>
+              <td
+                id={row.id}
+                class="py-3 px-4 text-center font-semibold text-gray-900"
+              >
+                {row.value}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default ProfileTable;
