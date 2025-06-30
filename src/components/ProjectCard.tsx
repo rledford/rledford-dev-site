@@ -73,11 +73,7 @@ const ProjectCard: Component<ProjectCardProps> = (props) => {
             interval={5000}
           />
         ) : props.images.length === 1 ? (
-          <img
-            src={props.images[0]}
-            alt={props.title}
-            class="w-full h-auto group-hover:scale-105 transition-transform duration-300"
-          />
+          <img src={props.images[0]} alt={props.title} class="w-full h-auto" />
         ) : null}
       </div>
       <div class="p-6 text-gray-700 leading-relaxed">{props.children}</div>

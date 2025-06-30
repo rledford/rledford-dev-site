@@ -10,35 +10,22 @@ export default function ProjectsShowcase() {
         color="amber"
       >
         <p class="text-gray-700 mb-4">
-          The NWEA Labs project is a mixture of custom-built apps, libraries,
-          and services that allow Researchers and Content Creators to build and
-          deploy tests to students across the country without collecting or
-          exposing any personal identifying information about the students that
-          participate.
+          A privacy-first educational assessment platform enabling researchers
+          and content creators to deploy tests to thousands of students
+          nationwide without collecting personal identifying information.
         </p>
         <p class="text-gray-700 mb-4">
-          This project primarily consists of an administration application for
-          Researchers and Content Creators that allows them to deploy tests to
-          groups of hundreds or thousands of students, and a testing application
-          for students that allows them to participate in the assessments.
-          During an assessment, the student's responses and metrics are
-          collected and submitted to the server application. The responses and
-          metrics collected are later processed through a pipe of custom data
-          extraction and aggregation tools that we built specifically for this
-          platform.
+          Built dual applications: an administration portal for test deployment
+          and management, and a student testing interface with real-time
+          response collection. Custom data extraction and aggregation pipelines
+          process assessment metrics for research analysis.
         </p>
         <p class="text-gray-700">
-          One of the most interesting solutions we built for this project was a
-          "Replay Service", which allows one or more Researchers to see a
-          Student's assessment session in real-time along with live note-taking
-          features. The "Replay Service" also provides a way to playback a
-          recorded session alongside the notes that were taken by Researchers.
-          In order to do this without integrating with third-party services and
-          to adhere to strict data retention and privacy policies, we built a
-          custom fullstack solution that captures and streams the DOM along with
-          other event data such as mouse movements and key presses. All of the
-          captured data is streamed via Websockets to a custom service that is
-          responsible for saving the data and streaming to any live viewers.
+          <strong>Key Innovation:</strong> Developed a custom "Replay Service"
+          that captures and streams DOM events, mouse movements, and keystrokes
+          via WebSockets, allowing researchers to observe student sessions in
+          real-time or replay recorded sessions with synchronized notes—all
+          while maintaining strict privacy compliance.
         </p>
       </ProjectCard>
 
@@ -53,43 +40,22 @@ export default function ProjectsShowcase() {
         color="amber"
       >
         <p class="text-gray-700 mb-4">
-          Positive Fusion is an end-to-end asset tracking and tool control
-          solution built from the ground up to provide its users with real-time
-          oversite of their items and assets. It was also built with security,
-          extensibility, and developers in mind as it includes thorough REST API
-          documentation, WebSocket event documentation, and data samples.
-          Positive Fusion already supports some popular location and inventory
-          data providers and can easily be integrated with existing systems
-          through its REST API. The extensibility and developer-friendliness of
-          Positive Fusion lead the way in the development of one of its
-          counterparts, Fusion Assist, which was built around its REST API.
-          Fusion Assist was designed for touch-screen PCs and utilizes RFID
-          technology to allow users to assign and return items without an
-          attendant present.
+          End-to-end asset tracking and tool control solution providing
+          real-time oversight of items and assets. Built with extensibility in
+          mind, featuring comprehensive REST API documentation, WebSocket
+          events, and seamless integration capabilities with existing systems.
+        </p>
+        <p class="text-gray-700 mb-4">
+          The platform's developer-friendly architecture enabled creation of{' '}
+          <strong>Fusion Assist</strong>, a companion touch-screen application
+          utilizing RFID technology for unattended item assignment and returns.
         </p>
         <p class="text-gray-700">
-          Some examples of Positive Fusion's real-time capabilities include:
+          <strong>Real-time capabilities:</strong> Live status updates,
+          geographic asset tracking, automated zone-based status changes,
+          intelligent notifications, and comprehensive zone monitoring with
+          activity broadcasting.
         </p>
-        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
-          <li>Displaying item status changes as they happen</li>
-          <li>
-            Showing asset location changes as they happen on simple and
-            geographic maps
-          </li>
-          <li>
-            Automatically changing the status of items, based on many
-            conditions, as they are detected in different zones
-          </li>
-          <li>
-            Reacting to item and asset changes to trigger events and send
-            notifications
-          </li>
-          <li>
-            Zone monitoring which, depending on the zone type, will broadcast
-            pertinent information about the zone as activity occurs in the
-            system.
-          </li>
-        </ul>
       </ProjectCard>
 
       <ProjectCard
@@ -99,12 +65,10 @@ export default function ProjectsShowcase() {
         color="amber"
       >
         <p class="text-gray-700">
-          SeaState was built for DOF Subsea in 2016 to deliver real time
-          location data, video streams, and notifications to clients that hire
-          vessels to perform various tasks offshore. In support of this web
-          application, various hardware and software components were developed
-          to help track vessel locations and stream HD video from surface and
-          subsea vessels.
+          Real-time vessel tracking and monitoring platform built for DOF Subsea
+          to deliver live location data, HD video streams, and notifications to
+          offshore operation clients. Integrated custom hardware and software
+          components for comprehensive surface and subsea vessel monitoring.
         </p>
       </ProjectCard>
     </div>
