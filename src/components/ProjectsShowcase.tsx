@@ -47,6 +47,7 @@ export default function ProjectsShowcase() {
         images={[
           '/images/positive-fusion-1.png',
           '/images/positive-fusion-2.png',
+          '/images/positive-fusion-3.png',
         ]}
         year="2019"
         color="amber"

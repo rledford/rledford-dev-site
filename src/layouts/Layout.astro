@@ -50,70 +50,27 @@ const { title = "rledford.dev" } = Astro.props;
       }
       
       .bg-pattern {
-        position: fixed;
+        position: absolute;
+        top: 0;
+        left: 0;
         height: 100%;
         width: 100%;
-        z-index: -1;
-        background-color: #fff;
-        opacity: 0.25;
-        background-image: linear-gradient(
-            30deg,
-            #c4c4c4 12%,
-            transparent 12.5%,
-            transparent 87%,
-            #c4c4c4 87.5%,
-            #c4c4c4
-          ),
-          linear-gradient(
-            150deg,
-            #c4c4c4 12%,
-            transparent 12.5%,
-            transparent 87%,
-            #c4c4c4 87.5%,
-            #c4c4c4
-          ),
-          linear-gradient(
-            30deg,
-            #c4c4c4 12%,
-            transparent 12.5%,
-            transparent 87%,
-            #c4c4c4 87.5%,
-            #c4c4c4
-          ),
-          linear-gradient(
-            150deg,
-            #c4c4c4 12%,
-            transparent 12.5%,
-            transparent 87%,
-            #c4c4c4 87.5%,
-            #c4c4c4
-          ),
-          linear-gradient(
-            60deg,
-            #c4c4c477 25%,
-            transparent 25.5%,
-            transparent 75%,
-            #c4c4c477 75%,
-            #c4c4c477
-          ),
-          linear-gradient(
-            60deg,
-            #c4c4c477 25%,
-            transparent 25.5%,
-            transparent 75%,
-            #c4c4c477 75%,
-            #c4c4c477
-          );
-        background-size: 40px 70px;
-        background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+        z-index: 1;
+        background-color: #f8fafc;
+        background-image: 
+          linear-gradient(rgba(99, 102, 241, 0.08) 2px, transparent 2px),
+          linear-gradient(90deg, rgba(99, 102, 241, 0.08) 2px, transparent 2px),
+          radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.25) 0.8px, transparent 0.8px);
+        background-size: 30px 30px, 30px 30px, 30px 30px;
+        background-position: 0 0, 0 0, 0 0;
       }
     </style>
   </head>
 
   <body class="font-sans bg-gray-50 min-h-screen">
-    <div class="bg-pattern"></div>
     <div class="relative">
-      <div class="max-w-6xl mx-auto bg-white/95 backdrop-blur-sm shadow-2xl min-h-screen">
+      <div class="bg-pattern"></div>
+      <div class="max-w-6xl mx-auto bg-white/95 backdrop-blur-sm shadow-2xl min-h-screen relative z-10">
         <slot />
       </div>
     </div>

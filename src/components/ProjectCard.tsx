@@ -1,4 +1,5 @@
 import type { Component, JSX } from 'solid-js';
+import ImageCarousel from './ImageCarousel.tsx';
 
 interface ProjectCardProps {
   title: string;
@@ -65,13 +66,19 @@ const ProjectCard: Component<ProjectCardProps> = (props) => {
         </h4>
       </div>
       <div class="overflow-hidden">
-        {props.images.map((image) => (
+        {props.images.length > 1 ? (
+          <ImageCarousel
+            images={props.images}
+            alt={props.title}
+            interval={5000}
+          />
+        ) : props.images.length === 1 ? (
           <img
-            src={image}
+            src={props.images[0]}
             alt={props.title}
             class="w-full h-auto group-hover:scale-105 transition-transform duration-300"
           />
-        ))}
+        ) : null}
       </div>
       <div class="p-6 text-gray-700 leading-relaxed">{props.children}</div>
       <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-t border-gray-200">
