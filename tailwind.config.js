@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Share Tech Mono Local', 'Share Tech Mono', 'monospace'],
-        mono: ['Share Tech Mono Local', 'Share Tech Mono', 'monospace'],
-        tech: ['Share Tech Mono Local', 'Share Tech Mono', 'monospace'],
+        sans: ['Share Tech Mono', 'monospace'],
+        mono: ['Share Tech Mono', 'monospace'],
+        tech: ['Share Tech Mono', 'monospace'],
       },
     },
   },
