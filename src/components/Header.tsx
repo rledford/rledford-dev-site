@@ -1,0 +1,53 @@
+import SocialLink from './SocialLink.tsx';
+
+export default function Header() {
+  return (
+    <div class="flex flex-col md:flex-row md:justify-between md:items-start py-8">
+      <div class="flex flex-col md:flex-row md:items-start md:gap-6 mb-2 md:mb-0">
+        {/* Profile Picture */}
+        <div class="relative group mb-4 md:mb-0 mx-auto md:mx-0">
+          <div class="absolute -inset-1 bg-gradient-to-r from-gray-400 to-slate-600 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+          <div class="relative w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full overflow-hidden bg-white shadow-xl">
+            <img
+              src="/images/profile-picture.jpg"
+              alt="Ryan Ledford"
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        </div>
+
+        {/* Name and Tagline */}
+        <div class="text-center md:text-left">
+          <small class="text-gray-500 font-medium tracking-wide uppercase text-xs">
+            Knowledge | Persistence | Discipline
+          </small>
+          <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mt-1 leading-tight">
+            Ryan Ledford
+          </h1>
+        </div>
+      </div>
+      <div class="text-center md:text-right">
+        <small class="text-red-500 block mb-8 md:mb-4 font-medium tracking-wide uppercase text-xs">
+          Full Stack | Solutions | Engineer
+        </small>
+        <div class="flex gap-4 justify-center md:justify-end">
+          <SocialLink
+            href="https://github.com/rledford"
+            icon="fab fa-github"
+            label="GitHub Profile"
+          />
+          <SocialLink
+            href="https://www.npmjs.com/~rledford"
+            icon="fab fa-npm"
+            label="NPM Profile"
+          />
+          <SocialLink
+            href="https://www.linkedin.com/in/ryan-ledford-356944124/"
+            icon="fab fa-linkedin"
+            label="LinkedIn Profile"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
