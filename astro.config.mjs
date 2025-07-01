@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import partytown from '@astrojs/partytown';
-import solidJs from '@astrojs/solid-js';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +11,6 @@ export default defineConfig({
   },
 
   integrations: [
-    solidJs(),
     partytown({
       config: {
         forward: ['dataLayer.push'],

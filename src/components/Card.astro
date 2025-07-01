@@ -1,0 +1,54 @@
+---
+interface CardProps {
+  title: string;
+  subtitle?: string;
+  content?: string;
+  footer?: string;
+  headerClass?: string;
+  borderClass?: string;
+  images?: string[];
+}
+
+const { title, subtitle, content, footer, headerClass, borderClass, images } = Astro.props as CardProps;
+
+const headerClasses = headerClass || 'bg-gradient-to-r from-gray-50 to-gray-100 text-gray-800 border-b border-gray-200';
+const borderClasses = borderClass || 'border-gray-200';
+---
+
+<div
+  class={`bg-white border ${borderClasses} rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group hover:-translate-y-1 backdrop-blur-sm`}
+>
+  <div class={`${headerClasses} px-6 py-4 font-bold text-lg`}>
+    {title}
+  </div>
+
+  {images &&
+    images.map((image) => (
+      <div class="overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-auto group-hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+    ))}
+
+  <div class="p-6">
+    {subtitle && (
+      <h6 class="text-gray-600 mb-3 font-medium text-base">
+        {subtitle}
+      </h6>
+    )}
+    {content ? (
+      <p class="text-gray-700 leading-relaxed">{content}</p>
+    ) : (
+      <slot />
+    )}
+  </div>
+
+  {footer && (
+    <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-6 py-4 border-t border-gray-200">
+      <div class="text-gray-600 text-sm">{footer}</div>
+    </div>
+  )}
+</div>

@@ -1,0 +1,264 @@
+---
+interface ImageCarouselProps {
+  images: string[];
+  interval?: number;
+  alt: string;
+}
+
+const { images = [], interval = 5000, alt } = Astro.props as ImageCarouselProps;
+
+const extendedImages = images.length <= 1 ? images : [images[images.length - 1], ...images, images[0]];
+---
+
+{images.length === 0 && (
+  <div class="w-full h-48 bg-gray-100 flex items-center justify-center">
+    <span class="text-gray-400">No images available</span>
+  </div>
+)}
+
+{images.length === 1 && (
+  <div class="relative w-full overflow-hidden">
+    <img
+      src={images[0]}
+      alt={alt}
+      class="w-full h-auto object-contain"
+    />
+  </div>
+)}
+
+{images.length > 1 && (
+  <div
+    class="relative w-full overflow-hidden group"
+    id="carousel-container"
+    data-images={JSON.stringify(images)}
+    data-interval={interval}
+    data-alt={alt}
+  >
+    <div class="relative w-full">
+      <div
+        id="carousel-track"
+        class="flex ease-in-out"
+        style={`transform: translateX(-${100}%);`}
+      >
+        {extendedImages.map((image, index) => (
+          <div class="w-full flex-shrink-0">
+            <img
+              src={image}
+              alt={`${alt} - Image ${(index % images.length) + 1}`}
+              class="w-full h-auto object-contain"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <button
+      id="prev-btn"
+      class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 focus:outline-none"
+      aria-label="Previous image"
+    >
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    </button>
+
+    <button
+      id="next-btn"
+      class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 focus:opacity-100 focus:outline-none"
+      aria-label="Next image"
+    >
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </button>
+
+    <div id="indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      {images.map((_, index) => (
+        <button
+          class={`indicator-btn w-2 h-2 rounded-full transition-colors duration-300 ${
+            index === 0 ? 'bg-white' : 'bg-white bg-opacity-50'
+          }`}
+          data-index={index}
+          aria-label={`Go to image ${index + 1}`}
+        />
+      ))}
+    </div>
+  </div>
+)}
+
+<script>
+  class ImageCarousel {
+    private currentIndex = 1;
+    private isHovered = false;
+    private isTransitioning = false;
+    private intervalId: ReturnType<typeof setInterval> | undefined;
+    private images: string[] = [];
+    private interval = 5000;
+    private track: HTMLElement | null = null;
+    private indicators: NodeListOf<HTMLButtonElement> | null = null;
+
+    constructor(container: HTMLElement) {
+      this.images = JSON.parse(container.dataset.images || '[]');
+      this.interval = parseInt(container.dataset.interval || '5000');
+      this.track = container.querySelector('#carousel-track');
+      this.indicators = container.querySelectorAll('.indicator-btn');
+
+      this.setupEventListeners(container);
+      this.startAutoPlay();
+    }
+
+    private setupEventListeners(container: HTMLElement) {
+      container.addEventListener('mouseenter', () => {
+        this.isHovered = true;
+      });
+
+      container.addEventListener('mouseleave', () => {
+        this.isHovered = false;
+      });
+
+      const prevBtn = container.querySelector('#prev-btn');
+      const nextBtn = container.querySelector('#next-btn');
+
+      prevBtn?.addEventListener('click', () => this.prevImage());
+      nextBtn?.addEventListener('click', () => this.nextImage());
+
+      this.indicators?.forEach((btn, index) => {
+        btn.addEventListener('click', () => this.goToImage(index));
+      });
+    }
+
+    private nextImage() {
+      if (this.isTransitioning) return;
+
+      this.stopAutoPlay();
+      this.startAutoPlay();
+
+      this.isTransitioning = true;
+      const nextIdx = this.currentIndex + 1;
+
+      if (nextIdx >= this.images.length + 1) {
+        this.currentIndex = nextIdx;
+        this.updateTransform();
+        setTimeout(() => {
+          this.isTransitioning = false;
+          this.currentIndex = 1;
+          this.updateTransform(false);
+        }, 500);
+      } else {
+        this.currentIndex = nextIdx;
+        this.updateTransform();
+        setTimeout(() => {
+          this.isTransitioning = false;
+        }, 500);
+      }
+
+      this.updateIndicators();
+    }
+
+    private prevImage() {
+      if (this.isTransitioning) return;
+
+      this.stopAutoPlay();
+      this.startAutoPlay();
+
+      this.isTransitioning = true;
+      const prevIdx = this.currentIndex - 1;
+
+      if (prevIdx < 1) {
+        this.currentIndex = 0;
+        this.updateTransform();
+        setTimeout(() => {
+          this.isTransitioning = false;
+          this.currentIndex = this.images.length;
+          this.updateTransform(false);
+        }, 500);
+      } else {
+        this.currentIndex = prevIdx;
+        this.updateTransform();
+        setTimeout(() => {
+          this.isTransitioning = false;
+        }, 500);
+      }
+
+      this.updateIndicators();
+    }
+
+    private goToImage(index: number) {
+      if (this.isTransitioning) return;
+
+      this.stopAutoPlay();
+      this.startAutoPlay();
+
+      this.isTransitioning = true;
+      this.currentIndex = index + 1;
+      this.updateTransform();
+      setTimeout(() => {
+        this.isTransitioning = false;
+      }, 500);
+
+      this.updateIndicators();
+    }
+
+    private updateTransform(withTransition = true) {
+      if (!this.track) return;
+      
+      this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+      this.track.style.transition = withTransition ? 'transform 0.5s ease-in-out' : 'none';
+    }
+
+    private updateIndicators() {
+      if (!this.indicators) return;
+
+      this.indicators.forEach((btn, index) => {
+        const isActive = index === (this.currentIndex - 1) % this.images.length;
+        btn.className = `indicator-btn w-2 h-2 rounded-full transition-colors duration-300 ${
+          isActive ? 'bg-white' : 'bg-white bg-opacity-50'
+        }`;
+      });
+    }
+
+    private startAutoPlay() {
+      if (this.images.length <= 1) return;
+
+      this.intervalId = setInterval(() => {
+        if (this.isHovered) {
+          this.nextImage();
+        }
+      }, this.interval);
+    }
+
+    private stopAutoPlay() {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+        this.intervalId = undefined;
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const carouselContainer = document.getElementById('carousel-container');
+    if (carouselContainer) {
+      new ImageCarousel(carouselContainer);
+    }
+  });
+</script>
