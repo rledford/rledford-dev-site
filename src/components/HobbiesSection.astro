@@ -1,0 +1,34 @@
+---
+import Grid from './Grid.astro';
+import Card from './Card.astro';
+import HobbiesList from './HobbiesList.astro';
+
+const hobbiesData = [
+  {
+    title: 'Creative Pursuits',
+    items: ['Pixel Art', 'Game Dev', 'Music', 'Guitar'],
+    headerClass:
+      'bg-gradient-to-r from-purple-500 to-purple-600 text-white border-b border-purple-400',
+    borderClass: 'border-purple-300',
+  },
+  {
+    title: 'Learning & Growth',
+    items: ['Learning', 'Teaching', 'Reading', 'Tinkering'],
+    headerClass:
+      'bg-gradient-to-r from-purple-500 to-purple-600 text-white border-b border-purple-400',
+    borderClass: 'border-purple-300',
+  },
+];
+---
+
+<Grid cols="grid-cols-1 md:grid-cols-2">
+  {hobbiesData.map((category) => (
+    <Card
+      title={category.title}
+      headerClass={category.headerClass}
+      borderClass={category.borderClass}
+    >
+      <HobbiesList items={category.items} color="purple" />
+    </Card>
+  ))}
+</Grid>
