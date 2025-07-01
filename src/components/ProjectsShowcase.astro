@@ -1,0 +1,73 @@
+---
+import ProjectCard from './ProjectCard.astro';
+---
+
+<div class="space-y-8">
+  <ProjectCard
+    title="NWEA Labs"
+    images={['/images/nwea-labs.png']}
+    year="2021-2023"
+    color="amber"
+  >
+    <p class="text-gray-700 mb-4">
+      A privacy-first educational assessment platform enabling researchers
+      and content creators to deploy tests to thousands of students
+      nationwide without collecting personal identifying information.
+    </p>
+    <p class="text-gray-700 mb-4">
+      Built dual applications: an administration portal for test deployment
+      and management, and a student testing interface with real-time
+      response collection. Custom data extraction and aggregation pipelines
+      process assessment metrics for research analysis.
+    </p>
+    <p class="text-gray-700">
+      <strong>Key Innovation:</strong> Developed a custom "Replay Service"
+      that captures and streams DOM events, mouse movements, and keystrokes
+      via WebSockets, allowing researchers to observe student sessions in
+      real-time or replay recorded sessions with synchronized notes—all
+      while maintaining strict privacy compliance.
+    </p>
+  </ProjectCard>
+
+  <ProjectCard
+    title="Positive Fusion"
+    images={[
+      '/images/positive-fusion-1.png',
+      '/images/positive-fusion-2.png',
+      '/images/positive-fusion-3.png',
+    ]}
+    year="2019"
+    color="amber"
+  >
+    <p class="text-gray-700 mb-4">
+      End-to-end asset tracking and tool control solution providing
+      real-time oversight of items and assets. Built with extensibility in
+      mind, featuring comprehensive REST API documentation, WebSocket
+      events, and seamless integration capabilities with existing systems.
+    </p>
+    <p class="text-gray-700 mb-4">
+      The platform's developer-friendly architecture enabled creation of <strong>Fusion Assist</strong>, a companion touch-screen application
+      utilizing RFID technology for unattended item assignment and returns.
+    </p>
+    <p class="text-gray-700">
+      <strong>Real-time capabilities:</strong> Live status updates,
+      geographic asset tracking, automated zone-based status changes,
+      intelligent notifications, and comprehensive zone monitoring with
+      activity broadcasting.
+    </p>
+  </ProjectCard>
+
+  <ProjectCard
+    title="SeaState"
+    images={['/images/seastate-1.png']}
+    year="2016"
+    color="amber"
+  >
+    <p class="text-gray-700">
+      Real-time vessel tracking and monitoring platform built for DOF Subsea
+      to deliver live location data, HD video streams, and notifications to
+      offshore operation clients. Integrated custom hardware and software
+      components for comprehensive surface and subsea vessel monitoring.
+    </p>
+  </ProjectCard>
+</div>

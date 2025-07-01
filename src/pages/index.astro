@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.tsx';
-import Timeline from '../components/Timeline.tsx';
-import FocusGrid from '../components/FocusGrid.tsx';
-import HobbiesSection from '../components/HobbiesSection.tsx';
-import SkillsGrid from '../components/SkillsGrid.tsx';
-import ProductSpecializations from '../components/ProductSpecializations.tsx';
-import ProjectsShowcase from '../components/ProjectsShowcase.tsx';
+import Header from '../components/Header.astro';
+import Timeline from '../components/Timeline.astro';
+import FocusGrid from '../components/FocusGrid.astro';
+import HobbiesSection from '../components/HobbiesSection.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import ProductSpecializations from '../components/ProductSpecializations.astro';
+import ProjectsShowcase from '../components/ProjectsShowcase.astro';
 ---
 
 <Layout>
@@ -67,7 +67,7 @@ import ProjectsShowcase from '../components/ProjectsShowcase.tsx';
         <div class="h-px bg-gradient-to-r from-amber-500 via-amber-300 to-transparent w-32"></div>
       </div>
       <div class="px-4">
-        <ProjectsShowcase client:load />
+        <ProjectsShowcase />
       </div>
     </div>
   </section>
