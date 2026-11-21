@@ -20,7 +20,7 @@ npm run build
 npm run preview
 ```
 
-Open the printed preview URL. The static site is in `build/`, including all images. Serve this directory through an HTTP server; opening `index.html` directly does not reproduce hosting.
+Open the printed preview URL. The static site is in `dist/`, including all images. Serve this directory through an HTTP server; opening `index.html` directly does not reproduce hosting.
 
 ## Checks
 
@@ -40,55 +40,33 @@ Use the actual server port. For a production preview, set `BASE_URL` to its URL,
 
 The tests preserve original content, emphasis, destinations, image associations, and asset hashes. Browser checks cover image decoding, keyboard controls, reduced motion, responsive layouts, analytics initialization, and content without JavaScript. External services are stubbed during browser tests.
 
-## Firebase Hosting
+## Cloudflare Pages
 
-Firebase support is optional. The current production host and Firebase project are not confirmed.
+The existing Cloudflare Pages project, `rledford-dev-site`, is connected to this GitHub repository and serves `rledford.dev`.
 
-Build the site, then start the local Hosting emulator:
+Keep these project build settings:
 
-```sh
-npm run build
-npm run hosting:emulator
-```
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | Repository root |
+| Production branch | `main` |
+| Node.js | `24.22.3`, selected by `.node-version` |
 
-Open `http://127.0.0.1:5000`. The emulator uses a demo project and does not need production credentials.
+The static adapter writes to `dist/` to preserve the previous Astro deployment path. Cloudflare reads `.node-version` when the dashboard does not override `NODE_VERSION`.
 
-Run the focused Hosting checks in another terminal:
+Push a feature branch and open a pull request to obtain a Cloudflare preview deployment. After its build and browser checks pass, merge the pull request to deploy production through the existing Git integration.
 
-```sh
-BASE_URL=http://127.0.0.1:5000 npm run test:e2e -- --grep hosting
-```
-
-Before deployment, verify the account, project, and Hosting site:
-
-```sh
-npx firebase login
-npx firebase projects:list
-npx firebase hosting:sites:list --project YOUR_PROJECT_ID
-```
-
-Historical repository configuration used `rledford-dev-site`. Treat that ID as a candidate until account verification.
-
-For a verified default Hosting site, build and deploy only Hosting:
+To test a deployed preview or production site:
 
 ```sh
-npm run build
-npx firebase deploy --only hosting --project YOUR_VERIFIED_PROJECT_ID
+BASE_URL=https://YOUR_DEPLOYMENT_URL EXPECT_HOSTING_HEADERS=1 npm run test:e2e
 ```
 
-For a specific site in a project with multiple sites, bind a target:
+Cloudflare reads `static/_headers` to serve the legacy portrait URL with its actual PNG content type. The top-level `static/404.html` makes missing paths return a 404 instead of the portfolio HTML.
 
-```sh
-npx firebase target:apply hosting portfolio YOUR_VERIFIED_SITE_ID --project YOUR_VERIFIED_PROJECT_ID
-```
-
-Add `"target": "portfolio"` to the `hosting` object in `firebase.json`. Then deploy that target explicitly:
-
-```sh
-npx firebase deploy --only hosting:portfolio --project YOUR_VERIFIED_PROJECT_ID
-```
-
-Keep the generated `.firebaserc` target mapping with the verified project configuration. A live deployment is separate from local development and preview.
+The Firebase Hosting site is disabled. Firebase tooling and configuration are no longer part of this project.
 
 ## Content and theme
 
@@ -96,7 +74,7 @@ Keep the generated `.firebaserc` target mapping with the verified project config
 - Agentic Engineering contains the confirmed agent capabilities, LangChain, and Langfuse. Software Engineering contains the conventional programming skills; its existing `#skills` link remains valid.
 - `src/lib/components/` contains the terminal panels, navigation, and gallery.
 - `src/styles/theme.css` contains the dark palette, gradients, glows, and responsive styles.
-- `static/` contains the favicon and images. SvelteKit copies them into `build/`.
+- `static/` contains the favicon and images. SvelteKit copies them into `dist/`.
 
 The palette uses [iTerm2 default profile colors](https://github.com/gnachman/iTerm2/blob/master/plists/DefaultBookmark.plist), plus statusline indexed purple `#af87ff` and gray `#808080`. The site has no light theme. Motion effects respect the reduced-motion preference.
 
@@ -108,6 +86,6 @@ Projects lead with a solution summary and domain labels. Expand `[ details ]` to
 
 Each project thumbnail shows its first screenshot. Click it to open a fitted overlay; hover only highlights the thumbnail. Browse additional images inside the overlay with Previous/Next or the arrow keys. Press Escape, click the backdrop, or use `[ close ]` to return to the same page position.
 
-The active portrait is `/images/profile-picture.png`. It preserves the original PNG bytes. The legacy `/images/profile-picture.jpg` URL remains available; Firebase serves it with the correct PNG content type.
+The active portrait is `/images/profile-picture.png`. It preserves the original PNG bytes. The legacy `/images/profile-picture.jpg` URL remains available; Cloudflare serves it with the correct PNG content type.
 
 The Google Fonts URL, Font Awesome kit, and GA4 identifier remain in `ExternalServices.svelte`. The site uses a local monospace fallback when fonts are unavailable.

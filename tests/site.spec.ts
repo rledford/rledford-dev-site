@@ -351,7 +351,7 @@ for (const dismissal of ['close button', 'backdrop']) {
   });
 }
 
-test('hosting serves and decodes every preserved asset, PNG portraits, and missing asset 404; legacy PNG MIME enforced on emulator only', async ({ page, request, baseURL }) => {
+test('hosting serves preserved assets, PNG portraits, and missing asset 404', async ({ page, request }) => {
   await page.goto('/');
   const paths = [...assets.map((asset) => asset.path), '/images/profile-picture.png'];
   for (const path of paths) {
@@ -359,7 +359,7 @@ test('hosting serves and decodes every preserved asset, PNG portraits, and missi
     expect(response.status(), path).toBe(200);
     if (!path.includes('profile-picture')) continue;
     expect((await response.body()).subarray(0, 8).toString('hex'), path).toBe('89504e470d0a1a0a');
-    if (path.endsWith('.png') || (baseURL && new URL(baseURL).port === '5000')) expect(response.headers()['content-type'], path).toContain('image/png');
+    if (path.endsWith('.png') || process.env.EXPECT_HOSTING_HEADERS === '1') expect(response.headers()['content-type'], path).toContain('image/png');
   }
   expect(await decodeAssets(page, paths)).toEqual(paths.map((path) => ({ path, decoded: true })));
   expect((await request.get('/images/nonexistent-preservation-test.png')).status()).toBe(404);
