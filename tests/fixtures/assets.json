@@ -1,0 +1,50 @@
+[
+  {
+    "path": "/favicon.svg",
+    "sha256": "1cc8b261220f888e528952100879cfe1d5a182ebbb841754ae3a8b0673e0e283",
+    "signature": "3c73766720786d6c",
+    "bytes": 1463
+  },
+  {
+    "path": "/images/arxmap-1.png",
+    "sha256": "1ec8a360739477748b28357cedfe882e54d9335d027de96ebdc5128da1f89a55",
+    "signature": "89504e470d0a1a0a",
+    "bytes": 3098188
+  },
+  {
+    "path": "/images/nwea-labs.png",
+    "sha256": "fc082326f9f2b1e201d716a9f849897c0d1d259900fa86e97f73946a00416413",
+    "signature": "89504e470d0a1a0a",
+    "bytes": 1438661
+  },
+  {
+    "path": "/images/positive-fusion-1.png",
+    "sha256": "979674c610f49caca69a26809f1b73ffb54f2bf552cde74f16bd7f3df8575831",
+    "signature": "89504e470d0a1a0a",
+    "bytes": 273767
+  },
+  {
+    "path": "/images/positive-fusion-2.png",
+    "sha256": "70030f3336575cae0ad68ffe5324c39b3fdcd34e939e21cf9fb370fcf4265724",
+    "signature": "89504e470d0a1a0a",
+    "bytes": 393839
+  },
+  {
+    "path": "/images/positive-fusion-3.png",
+    "sha256": "e00400b23dd71183a121bef2d61df9c3905953542b113fc17e4d6d6b930e6401",
+    "signature": "89504e470d0a1a0a",
+    "bytes": 340554
+  },
+  {
+    "path": "/images/profile-picture.jpg",
+    "sha256": "e1a81234aad438f83c406b14bc0f696e59443e2faad19510a9db4196f4fc9cca",
+    "signature": "89504e470d0a1a0a",
+    "bytes": 67155
+  },
+  {
+    "path": "/images/seastate-1.png",
+    "sha256": "ad46ecec911d8be37d69e17bef583e6cd626f95f74af0b49e1dcbcbc065d65f0",
+    "signature": "89504e470d0a1a0a",
+    "bytes": 2369388
+  }
+]

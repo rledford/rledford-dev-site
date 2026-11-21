@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+build/
+.svelte-kit/
+playwright-report/
+test-results/
+*-debug.log
+.firebase/
+.env.*
+!.env.example
