@@ -127,6 +127,8 @@ for (const width of [375, 768, 1440]) {
     const gallery = page.getByRole('region', { name: galleryName });
     await expect(gallery.getByRole('link', { name: 'View Positive Fusion image 1 of 3 full size' })).toBeVisible();
     await expect(gallery.getByRole('button')).toHaveCount(0);
+    const toggle = page.getByRole('button', { name: 'Portfolio sections menu', exact: true });
+    if (width <= 640) await toggle.click();
     await expect(page.getByRole('navigation', { name: 'Portfolio sections' })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     expect(errors).toEqual([]);
@@ -361,4 +363,113 @@ test('hosting serves and decodes every preserved asset, PNG portraits, and missi
   }
   expect(await decodeAssets(page, paths)).toEqual(paths.map((path) => ({ path, decoded: true })));
   expect((await request.get('/images/nonexistent-preservation-test.png')).status()).toBe(404);
+});
+
+for (const width of [320, 375, 430]) {
+  test(`mobile menu, project layout, and touch targets work at ${width}px`, async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ baseURL, viewport: { width, height: 812 }, isMobile: true, hasTouch: true });
+    try {
+      const page = await context.newPage();
+      await stubServices(page);
+      await page.goto('/');
+      const toggle = page.getByRole('button', { name: 'Portfolio sections menu', exact: true });
+      const navigation = page.getByRole('navigation', { name: 'Portfolio sections' });
+      await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+      await toggle.tap();
+      await expect(navigation.getByRole('link')).toHaveCount(sectionTitles.length);
+      await navigation.getByRole('link', { name: 'Professional Projects', exact: true }).tap();
+      await expect(page).toHaveURL(/#projects$/);
+      await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+      const article = projectArticle(page, 'Positive Fusion');
+      const geometry = await article.evaluate((element) => {
+        const heading = element.querySelector('.project-heading');
+        const thumbnail = element.querySelector('.project-thumbnail');
+        const overview = element.querySelector('.project-overview');
+        if (!heading || !thumbnail || !overview) throw new Error('Missing project layout');
+        const title = heading.getBoundingClientRect();
+        const image = thumbnail.getBoundingClientRect();
+        return { fullWidthHeading: Math.abs(title.width - overview.getBoundingClientRect().width) < 1, imageBelowHeading: image.top >= title.bottom, imageWidth: image.width };
+      });
+      expect(geometry).toEqual({ fullWidthHeading: true, imageBelowHeading: true, imageWidth: Math.min(width - 72, 240) });
+      await article.locator('summary').tap();
+      await expect(article.locator('details')).toHaveJSProperty('open', true);
+      const { dialog } = await openProjectViewer(page);
+      await dialog.getByRole('button', { name: 'Next image', exact: true }).tap();
+      await expect(dialog.getByRole('img')).toHaveAttribute('src', baseline.projects[1].images[1]);
+      await dialog.getByRole('button', { name: 'Close image viewer' }).tap();
+      await expect(dialog).not.toBeVisible();
+      await toggle.scrollIntoViewIfNeeded();
+      await toggle.tap();
+      const smallTargets = await page.locator('.workspace-name, .menu-toggle, .terminal-nav a, .social-links a, .section-anchor, .project-details summary, .site-footer a').evaluateAll((elements) => elements.filter((element) => {
+        const bounds = element.getBoundingClientRect();
+        return bounds.width > 0 && (bounds.width < 44 || bounds.height < 44);
+      }).map((element) => element.textContent?.trim()));
+      expect(smallTargets).toEqual([]);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    } finally {
+      await context.close();
+    }
+  });
+}
+
+test('mobile menu supports keyboard dismissal and desktop resizing', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto('/');
+  const toggle = page.locator('.menu-toggle');
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await toggle.press('Enter');
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await page.getByRole('navigation').getByRole('link').first().focus();
+  await page.keyboard.press('Escape');
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await expect(toggle).toBeFocused();
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(toggle).not.toBeVisible();
+  await expect(page.getByRole('navigation').getByRole('link')).toHaveCount(sectionTitles.length);
+  await page.setViewportSize({ width: 375, height: 812 });
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('mobile navigation and project details remain usable without JavaScript', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, viewport: { width: 320, height: 640 }, javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    await stubServices(page);
+    await page.goto('/');
+    await expect(page.getByRole('navigation').getByRole('link')).toHaveCount(sectionTitles.length);
+    await expect(page.locator('.menu-toggle')).toHaveCount(0);
+    await page.setViewportSize({ width: 812, height: 375 });
+    await expect(page.getByRole('navigation')).toBeVisible();
+    await page.setViewportSize({ width: 320, height: 640 });
+    await page.getByRole('navigation').getByRole('link', { name: 'Professional Projects', exact: true }).click();
+    const article = projectArticle(page, 'Positive Fusion');
+    await article.locator('summary').click();
+    await expect(article.locator('.project-prose')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  } finally {
+    await context.close();
+  }
+});
+
+test('landscape touch controls and fitted images stay within the viewport', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, viewport: { width: 812, height: 375 }, isMobile: true, hasTouch: true });
+  try {
+    const page = await context.newPage();
+    await stubServices(page);
+    await page.goto('/');
+    await expect(page.getByRole('navigation')).toBeVisible();
+    const { dialog } = await openProjectViewer(page);
+    expect(await dialog.evaluate((element) => {
+      const bounds = element.getBoundingClientRect();
+      return { horizontal: bounds.left >= 0 && bounds.right <= innerWidth, vertical: bounds.top >= 0 && bounds.bottom <= innerHeight };
+    })).toEqual({ horizontal: true, vertical: true });
+    await dialog.getByRole('button', { name: 'Next image', exact: true }).tap();
+    await expect(dialog.getByRole('img')).toHaveAttribute('src', baseline.projects[1].images[1]);
+    await dialog.getByRole('button', { name: 'Close image viewer' }).tap();
+    expect(await page.locator('.terminal-nav a, .social-links a, .section-anchor, .project-details summary, .site-footer a').evaluateAll((elements) => elements.every((element) => element.getBoundingClientRect().height >= 44))).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  } finally {
+    await context.close();
+  }
 });

@@ -55,6 +55,7 @@ main:focus { outline: none; }
 .workspace-name .prompt { margin-right: 10px; }
 .workspace-path { color: var(--muted); font-weight: 400; }
 .workspace-type { color: var(--muted); font-size: 14px; letter-spacing: .13em; }
+.menu-toggle { display: none; }
 .terminal-nav { display: flex; flex-wrap: wrap; border: 1px solid #ffffff20; background: linear-gradient(105deg, #111b20, #18131e); padding: 5px; gap: 3px; box-shadow: 0 1px 0 #60fdff40, 0 12px 40px #00000026; }
 .terminal-nav a { --nav-accent: var(--green); display: inline-flex; gap: 9px; align-items: center; padding: 9px 12px; font-size: 14px; color: var(--muted); }
 .terminal-nav a[href='#agentic-engineering'] { --nav-accent: var(--gold); }
@@ -196,25 +197,40 @@ html[data-scroll-effects='enabled'] [data-scroll-reveal]:target {
   .timeline li { grid-template-columns: 150px 1fr; gap: 20px; }
   .timeline-title { display: block; }
 }
+@media (max-width: 640px), (pointer: coarse) {
+  .workspace-name, .social-links a, .site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+  .terminal-nav a { min-height: 44px; }
+  .workspace-name { flex-wrap: wrap; }
+  .section-anchor { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+  .project-details summary { display: flex; align-items: center; min-height: 44px; min-width: 44px; }
+}
 @media (max-width: 640px) {
   .site-shell { width: calc(100% - 32px); }
   .terminal-header { padding-top: 20px; }
-  .workspace-bar { padding-bottom: 16px; }
   .workspace-type { display: none; }
   .workspace-name { font-size: 14px; }
-  .terminal-nav { gap: 2px; }
-  .terminal-nav a { padding: 7px 9px; font-size: 14px; gap: 7px; }
-  .identity { grid-template-columns: 1fr; gap: 34px; padding: 44px 6px 62px; }
-  .command-line { margin-bottom: 25px; }
+  .menu-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; font: inherit; min-height: 48px; padding: 8px 14px; border: 1px solid var(--border); background: linear-gradient(105deg, #111b20, #18131e); color: var(--cyan); cursor: pointer; list-style: none; }
+  .menu-toggle::after { content: '+'; color: var(--magenta); }
+  .menu-toggle[aria-expanded='true']::after { content: '−'; }
+  .menu-toggle[aria-expanded='true'] { border-bottom: 0; }
+  .terminal-nav { flex-direction: column; gap: 2px; }
+  .terminal-nav.mobile-collapsed { display: none; }
+  .terminal-nav a { min-height: 44px; padding: 8px 9px; font-size: 14px; gap: 7px; }
+  .workspace-bar { padding-bottom: 8px; }
+  .social-links { column-gap: 18px; row-gap: 0; }
+  .social-links a { gap: 5px; }
+  .identity { grid-template-columns: 1fr; gap: 22px; padding: 28px 6px 42px; }
+  .command-line { margin-bottom: 18px; }
   .identity h1 { font-size: clamp(36px, 10vw, 52px); }
   .identity-motto { font-size: 14px; letter-spacing: 0; }
   .identity-role { font-size: 14px; margin-top: 16px; }
   .identity-rule { margin: 24px 0; }
-  .social-links { gap: 10px 15px; }
-  .portrait-frame { width: 220px; justify-self: start; }
+  .portrait-frame { width: 184px; justify-self: start; }
+  .portrait-frame figcaption { font-size: 12px; }
+  .portrait-frame figcaption .prompt { margin-right: 4px; }
   .terminal-panel { margin-bottom: 40px; }
-  .panel-heading { padding: 0 7px; gap: 4px; }
-  .panel-heading h2 { font-size: 16px; padding: 0 7px; }
+  .panel-heading { margin-top: -23px; padding: 0 7px; gap: 4px; }
+  .panel-heading h2 { min-width: 0; overflow-wrap: anywhere; font-size: 16px; padding: 0 7px; }
   .section-anchor { padding: 0 6px; }
   .panel-content { padding: 24px 19px 28px; }
   .grouped-list { grid-template-columns: 1fr; gap: 27px; }
@@ -226,9 +242,10 @@ html[data-scroll-effects='enabled'] [data-scroll-reveal]:target {
   .timeline-period { padding-top: 0; }
   .timeline-marker { top: 9px; }
   .timeline-detail p { margin-top: 8px; font-size: 16px; }
-  .project-overview { grid-template-columns: minmax(0, 1fr) 120px; gap: 11px; }
+  .project-overview { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .project-heading h3 { font-size: 20px; }
-  .project-thumbnail { grid-row: 1; }
+  .project-thumbnail { grid-column: 1; grid-row: 4; width: min(100%, 240px); }
+  .project-domains { grid-row: 3; }
   .project-summary { grid-column: 1 / -1; }
   .project-meta { gap: 3px 10px; }
   .project-prose p { font-size: 16px; }
