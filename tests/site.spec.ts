@@ -82,7 +82,7 @@ test('separates agentic capabilities and AI tools from software engineering', as
     headings: ['Agentic Engineering', 'Software Engineering'],
     agenticTools: ['LangChain', 'Langfuse'],
     softwareTools: [],
-    firstCapability: 'Agentic Workflow Automation',
+    firstCapability: 'Workflow Automation',
   });
 });
 
