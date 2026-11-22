@@ -1,5 +1,6 @@
 # rledford.dev
 
-Ryan Ledford's official portfolio and online CV, covering professional experience, project work, engineering capabilities, and interests.
+Personal portfolio and online CV, covering professional experience,
+project work, engineering capabilities, and interests.
 
 [View the portfolio](https://rledford.dev)
